@@ -16,34 +16,44 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Register")),
+      appBar: AppBar(title: const Text("Register"),centerTitle:true, backgroundColor:Colors.blueAccent,foregroundColor: Colors.white,),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            
             const Text("Daftar Akun Baru", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            
             const SizedBox(height: 20),
+            
             TextField(
               controller: usernameController,
               decoration: const InputDecoration(
                 labelText: 'Username',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                ),
               ),
             ),
+            
             const SizedBox(height: 15),
+            
             TextField(
               controller: passwordController,
               obscureText: true,
               decoration: const InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                ),
               ),
             ),
+            
             const SizedBox(height: 20),
+            
             ElevatedButton(
               onPressed: () {
-                // Panggil fungsi register dari controller
                 _authController.register(
                   context,
                   usernameController.text,

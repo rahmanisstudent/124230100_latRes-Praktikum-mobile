@@ -3,7 +3,7 @@ class NewsItem {
   final String title;
   final String imageUrl;
   final String summary;
-  final String url; // Link ke website asli
+  final String url;
   final String publishedAt;
   final String newsSite;
 
@@ -17,7 +17,6 @@ class NewsItem {
     required this.newsSite,
   });
 
-  // Factory method untuk mengubah JSON menjadi Object NewsItem
   factory NewsItem.fromJson(Map<String, dynamic> json) {
     return NewsItem(
       id: json['id'],

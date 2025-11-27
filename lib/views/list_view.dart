@@ -4,8 +4,8 @@ import 'package:latihan_responsi/models/news_item.dart';
 import 'package:latihan_responsi/views/detail_view.dart';
 
 class ItemListView extends StatefulWidget {
-  final String category; // 'articles', 'blogs', atau 'reports'
-  final String title;    // Judul halaman (misal: 'News', 'Blogs')
+  final String category;
+  final String title;
 
   const ItemListView({super.key, required this.category, required this.title});
 
@@ -20,14 +20,13 @@ class _ItemListViewState extends State<ItemListView> {
   @override
   void initState() {
     super.initState();
-    // Memanggil data saat halaman dibuka
     _futureData = _controller.getData(widget.category);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(title: Text(widget.title),backgroundColor: Colors.blueAccent,foregroundColor: Colors.white,),
       body: FutureBuilder<List<NewsItem>>(
         future: _futureData,
         builder: (context, snapshot) {
@@ -39,7 +38,6 @@ class _ItemListViewState extends State<ItemListView> {
             return const Center(child: Text("Tidak ada data ditemukan."));
           }
 
-          // Jika data ada, tampilkan List
           return ListView.builder(
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
@@ -57,7 +55,6 @@ class _ItemListViewState extends State<ItemListView> {
                   title: Text(item.title, maxLines: 2, overflow: TextOverflow.ellipsis),
                   subtitle: Text(item.newsSite),
                   onTap: () {
-                    // Navigasi ke Detail Page
                     Navigator.push(
                       context,
                       MaterialPageRoute(

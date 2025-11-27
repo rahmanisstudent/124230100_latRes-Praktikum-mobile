@@ -17,31 +17,43 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Login'),centerTitle: true, backgroundColor:Colors.blueAccent, foregroundColor: Colors.white,),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text("Silakan Login", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            
             const SizedBox(height: 20),
-            TextField(
-              controller: usernameController,
-              decoration: const InputDecoration(
-                labelText: 'Username',
-                border: OutlineInputBorder(),
+            
+            Container(
+              child: TextField(
+                controller: usernameController,
+                decoration: const InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                  ),
+                ),
               ),
             ),
+
             const SizedBox(height: 15),
+            
             TextField(
               controller: passwordController,
               obscureText: true,
               decoration: const InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                ),
               ),
             ),
+
             const SizedBox(height: 20),
+
             ElevatedButton(
               onPressed: () {
                 _authController.login(
@@ -53,7 +65,6 @@ class _LoginViewState extends State<LoginView> {
               child: const Text('Login'),
             ),
             
-            // --- TOMBOL MENUJU REGISTER ---
             const SizedBox(height: 10),
             TextButton(
               onPressed: () {

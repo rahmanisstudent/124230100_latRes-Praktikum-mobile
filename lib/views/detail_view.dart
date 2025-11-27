@@ -7,7 +7,6 @@ class DetailView extends StatelessWidget {
 
   const DetailView({super.key, required this.item});
 
-  // Fungsi untuk membuka link di browser
   Future<void> _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
@@ -18,12 +17,14 @@ class DetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Detail")),
+      appBar: AppBar(title: const Text("Detail"),backgroundColor: Colors.blueAccent,foregroundColor: Colors.white,),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
             Image.network(item.imageUrl, width: double.infinity, fit: BoxFit.cover),
+
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -41,6 +42,7 @@ class DetailView extends StatelessWidget {
           ],
         ),
       ),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: () => _launchURL(item.url),
         tooltip: 'Buka Web',

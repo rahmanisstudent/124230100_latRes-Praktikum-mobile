@@ -32,15 +32,18 @@ class _DashboardViewState extends State<DashboardView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hai, ${username ?? "User"}!'), // Menampilkan username di AppBar
+        title: Text('Hai, ${username ?? "User"}!',),
+        centerTitle: true,
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.blueAccent,
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Tombol Menu (News, Blog, Report) bisa ditambahkan di sini nanti
+
               _buildMenuButton(
               context,
               "News",
@@ -48,23 +51,29 @@ class _DashboardViewState extends State<DashboardView> {
               "Get an overview of the latest SpaceFlight news, from various sources! Easily link your users to the right websites.",
               Icons.newspaper,
             ),
+
               const SizedBox(height: 15),
+
               _buildMenuButton(
               context,
               "Blog",
               "blogs",
               "Blogs often provide a more detailed overview of launches and missions. A must-have for the serious spaceflight enthusiast.",
-              Icons.article_outlined, // Atau Icons.book
+              Icons.article_outlined,
             ),
+
               const SizedBox(height: 15),
+
               _buildMenuButton(
               context,
               "Reports",
               "reports",
               "Space stations and other missions often publish their data. With SNAPI, you can include it in your app.",
-              Icons.analytics_outlined, // Atau Icons.bar_chart
+              Icons.analytics_outlined,
             ),
+
               const SizedBox(height: 40),
+              
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 onPressed: () {
